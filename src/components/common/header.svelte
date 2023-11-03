@@ -9,14 +9,14 @@
 
 <template>
   <header
-    class="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent"
+    class="pointer-events-none w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b dark:from-gray-900 to-transparent from-[#50B0EC]"
   >
-    <div class="flex justify-between section-container">
+    <div class="flex justify-between section-container pointer-events-auto">
       <a href="#home" class="link">
         <img
-          src="/logo.svg"
+          src="/logo.png"
           alt="Logo - Ayush Singh"
-          width="{22}"
+          width="{400}"
           height="{22}"
         />
       </a>
@@ -36,3 +36,7 @@
     </div>
   </header>
 </template>
+
+<style>
+  /* your styles go here */
+</style>

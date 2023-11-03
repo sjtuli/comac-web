@@ -10,10 +10,10 @@
 }
 
 .outline {
-  @apply border-white border-2;
+  @apply drak:border-white border-gray-3 border-2;
 
   &:hover {
-    @apply bg-white text-gray-900 opacity-90;
+    @apply dark:bg-white text-gray-900 opacity-90 bg-gray-1;
   }
 }
 

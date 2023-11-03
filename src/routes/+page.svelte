@@ -73,7 +73,6 @@
 <ProgressIndicator />
 <Cursor {isDesktop} />
 <main class="flex-col flex">
-  <div class="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
   <HeroSection />
   <AboutSection />
   <ProjectsSection {isDesktop} />

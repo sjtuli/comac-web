@@ -78,7 +78,7 @@
     left: -0.5rem;
     will-change: transform;
     border-radius: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
   }
   .hidden_cursor {
     @apply hidden;

@@ -3,6 +3,8 @@
   import { onMount } from 'svelte';
   import '$lib/i18n';
   import Modal from '../components/modals/install_prompt/index.svelte';
+  import 'uno.css';
+  import '@unocss/reset/tailwind.css';
 
   let isModalOpen = false;
   // eslint-disable-next-line no-undef
@@ -81,7 +83,7 @@
 <style>
   @import '../styles/globals.scss';
   main {
-    /* background-image: url('/bg.png'); */
+    background-image: url('/bg.png');
     font-family: 'Google Sans', Avenir, ui-sans-serif, 'system-ui',
       '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto',
       '"Helvetica Neue"', 'Arial', '"Noto Sans"', sans-serif,

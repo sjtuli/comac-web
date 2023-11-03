@@ -8,24 +8,25 @@ import adapter from '@sveltejs/adapter-auto';
 export default {
   preprocess: [
     vitePreprocess(),
+    UnoCSS({
+      configOrPath: 'uno.config.ts',
+    }),
     preprocess({
       typescript: {
         // 额外的 TypeScript 选项
       },
       scss: {
-        prependData: `@import "./src/styles/globals.scss";`,
+        // prependData: `@import "./src/styles/globals.scss";`,
       },
-    }),
-    UnoCSS({
-      configOrPath: 'uno.config.ts',
     }),
   ],
   kit: {
     // hydrate the <div id="svelte"> element in src/app.html
     adapter: adapter(),
-    prerender: {
-      crawl: true,
-      entries: ['*'],
+  },
+  vitePlugin: {
+    inspector: {
+      showToggleButton: 'always',
     },
   },
 };

@@ -1,6 +1,6 @@
 // uno.config.ts
 import { resolve } from 'node:path';
-import { defineConfig, presetWind } from 'unocss';
+import { defineConfig, presetTypography, presetWind } from 'unocss';
 import presetAttributify from '@unocss/preset-attributify';
 import presetIcons from '@unocss/preset-icons';
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders';
@@ -18,6 +18,7 @@ export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify(),
+    presetTypography(),
     presetIcons({
       extraProperties: {
         display: 'inline-block',

@@ -59,7 +59,9 @@
   <div class="font-medium flex flex-col pt-32 md:pt-0 select-none">
     <div class="md:mb-4 mb-2">
       <h2 class="text-4xl seq">Hello 👋🏻</h2>
-      <h1 class="text-3xl seq">I am Ayush Singh</h1>
+      <h1 class="text-3xl seq flex items-center">
+        <span>这里是大飞机</span><img src="/airplane(60 x 60).png" alt="" />
+      </h1>
     </div>
     <p class="mb-4">
       <span
@@ -76,8 +78,9 @@
           target="_blank"
         >
           <img
+            class="some_icon"
             src="{`/social/${el}.svg`}"
-            alt="{el}"
+            alt="{`/social/${el}.svg`}"
             width="{40}"
             height="{40}"
           />
@@ -107,10 +110,9 @@
       ></Button>
     </div>
   </div>
-
   <div
-    class="absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end"
-    style=" maxHeight: '650px'"
+    class="absolute hero-bg right-0 md:bottom-0 bottom-8 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end"
+    style=" max-height: '650px'"
   >
     <HeroImage />
   </div>

@@ -1,10 +1,6 @@
 // vite.config.ts
 
-import { VitePWA } from 'vite-plugin-pwa';
 import { sveltekit } from '@sveltejs/kit/vite';
-
-import autoImport from 'sveltekit-autoimport';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import UnoCSS from 'unocss/vite';
 
 import { type ConfigEnv, type UserConfig, loadEnv } from 'vite';
@@ -20,23 +16,10 @@ export default function ({ command, mode }: ConfigEnv): UserConfig {
       hmr: true,
     },
     plugins: [
-      svelte(),
-      sveltekit(),
-      autoImport({
-        components: ['./src/components'],
-      }),
       UnoCSS({
         configFile: 'uno.config.ts',
       }),
-      VitePWA({
-        registerType: 'prompt',
-        devOptions: {
-          enabled: true,
-        },
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        },
-      }),
+      sveltekit(),
     ],
     build: {
       minify: 'terser',
