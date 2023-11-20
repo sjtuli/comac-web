@@ -2007,10 +2007,15 @@
   resolved "https://registry.npmjs.org/@unocss/core/-/core-0.56.5.tgz"
   integrity sha512-fx5VhOjSHn0HdV2D34pEwFMAHJcJQRTCp1xEE4GzxY1irXzaa+m2aYf5PZjmDxehiOC16IH7TO9FOWANXk1E0w==
 
-"@unocss/core@0.57.1", "@unocss/core@^0.57.1", "@unocss/core@latest":
+"@unocss/core@0.57.1", "@unocss/core@latest":
   version "0.57.1"
   resolved "https://registry.npmjs.org/@unocss/core/-/core-0.57.1.tgz#413bb5dc5546e3b943a67d1040567c2c90bb4120"
   integrity sha512-cqQW/4gCuk+bFMPg9lBanuRNQ9Lx1l4PpMN/6uKxI5WROpq7ce/Xb4uGvAxKLh3ITtFSpXs2cLfsy7QD6cVD/Q==
+
+"@unocss/core@0.57.6", "@unocss/core@^0.57.1":
+  version "0.57.6"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.57.6.tgz#f21920f4cedcda17455763fe372bfc6dec55167e"
+  integrity sha512-rkqMX5Lyyl2u2PF2EMcH/QeFUAoiFeq5vnaGGYV2LVfTlDrEVx8CrNHlBmWr5fXrhyzXi366pK/ErJ2pepGiqg==
 
 "@unocss/eslint-config@^0.56.4":
   version "0.56.5"
@@ -2078,13 +2083,22 @@
   dependencies:
     "@unocss/core" "0.57.1"
 
-"@unocss/preset-icons@0.57.1", "@unocss/preset-icons@latest":
+"@unocss/preset-icons@0.57.1":
   version "0.57.1"
   resolved "https://registry.npmjs.org/@unocss/preset-icons/-/preset-icons-0.57.1.tgz#225309d05bbf2eb24187dda9cb96f533e18398f7"
   integrity sha512-ve4jC6yREfS0mv97DCld9xLjMuiSCcsQPKucdtpUfCjLMqtGd1ZGGdFv02Q+92NkW7HDfgj+izEw1SKh9695Ow==
   dependencies:
     "@iconify/utils" "^2.1.11"
     "@unocss/core" "0.57.1"
+    ofetch "^1.3.3"
+
+"@unocss/preset-icons@latest":
+  version "0.57.6"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-icons/-/preset-icons-0.57.6.tgz#f9c9d963d72b85bbf9b5df2bdad7f4fac08becae"
+  integrity sha512-VC08C0QQ9MEEpMAXa6ffyZi6p7IoJ3UrphUQKjkTz0fvWBZ8NnlTGrw65R75nv4Cxos+2erOvJAOyMG9z7/z3g==
+  dependencies:
+    "@iconify/utils" "^2.1.11"
+    "@unocss/core" "0.57.6"
     ofetch "^1.3.3"
 
 "@unocss/preset-mini@0.56.5":
