@@ -23,11 +23,12 @@
     "serve-json": "json-server --watch db.json --port 4000"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^1.1.0",
     "@picocss/pico": "^1.5.10",
     "@rollup/plugin-alias": "^5.0.1",
+    "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.26.0",
     "@sveltejs/package": "^2.2.2",
-    "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^2.4.6",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/svelte": "^4.0.4",
@@ -35,25 +36,27 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@unocss/core": "latest",
-    "@unocss/preset-icons": "latest",
     "@unocss/eslint-config": "^0.56.4",
     "@unocss/extractor-pug": "^0.56.4",
+    "@unocss/preset-icons": "latest",
     "@unocss/preset-uno": "^0.56.4",
     "@unocss/svelte-scoped": "^0.57.1",
     "@unocss/transformer-directives": "^0.57.1",
     "@vite-pwa/assets-generator": "^0.0.10",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-svelte": "^2.34.0",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
+    "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-css-order": "^2.0.1",
     "prettier-plugin-svelte": "^3.0.3",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",
+    "simple-git-hooks": "^2.9.0",
     "stylelint": "^15.10.3",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^12.0.0",
@@ -83,9 +86,11 @@
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
+    "@splinetool/runtime": "^0.9.508",
     "@sveltejs/kit": "^1.26.0",
     "@sxzz/eslint-config": "^3.7.0",
     "@types/cookie": "^0.5.3",
+    "@unocss/extractor-svelte": "^0.57.7",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "cookie": "^0.5.0",
     "gsap": "3.8.0",
@@ -93,5 +98,11 @@
     "node-sass": "^9.0.0",
     "svelte-spa-router": "^3.3.0",
     "vanilla-tilt": "^1.8.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }

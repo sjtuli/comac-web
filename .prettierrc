@@ -7,5 +7,16 @@
   "plugins": [
     "prettier-plugin-svelte",
     "prettier-plugin-css-order"
-  ]
+  ],
+  "useTabs": true,
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "parser": "svelte"
+      }
+    }
+  ],
+  "htmlWhitespaceSensitivity": "strict",
+  "endOfLine": "auto"
 }

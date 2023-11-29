@@ -11,22 +11,22 @@ import extractorPug from '@unocss/extractor-pug';
 const iconDirectory = resolve(__dirname, 'icons');
 
 export default defineConfig({
-  rules: [['custom-rule', { color: 'red' }]],
-  extractors: [extractorPug()],
-  shortcuts: [{ logo: 'i-logos-vue w-6em h-6em transform transition-800' }],
-  transformers: [transformerDirective(), transformerVariantGroup()],
-  presets: [
-    presetWind(),
-    presetAttributify(),
-    presetTypography(),
-    presetIcons({
-      extraProperties: {
-        display: 'inline-block',
-        'vertical-align': 'middle',
-      },
-      collections: {
-        custom: FileSystemIconLoader(iconDirectory),
-      },
-    }),
-  ],
+	rules: [['custom-rule', { color: 'red' }]],
+	extractors: [extractorPug()],
+	shortcuts: [{ logo: 'i-logos-vue w-6em h-6em transform transition-800' }],
+	transformers: [transformerDirective(), transformerVariantGroup()],
+	presets: [
+		presetWind(),
+		presetAttributify(),
+		presetTypography(),
+		presetIcons({
+			extraProperties: {
+				display: 'inline-block',
+				'vertical-align': 'middle',
+			},
+			collections: {
+				custom: FileSystemIconLoader(iconDirectory),
+			},
+		}),
+	],
 });

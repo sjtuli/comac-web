@@ -6,10 +6,8 @@
     isSmallScreen,
   } from '../../routes/store';
   import { onDestroy, onMount } from 'svelte';
-
   let quoteRef: HTMLDivElement;
   let targetSection: HTMLElement;
-
   let willChange = false;
 
   const initTextGradientAnimation = (
