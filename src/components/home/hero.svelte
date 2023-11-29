@@ -61,7 +61,7 @@
 		<div class="md:mb-4 mb-2">
 			<h2 class="text-4xl seq">Hello 👋🏻</h2>
 			<h1 class="text-3xl seq flex items-center">
-				<span>这里是大飞机</span><img src="/airplane(60 x 60).png" alt="" />
+				<span>这里是上海交通大学3d打印云平台</span>
 			</h1>
 		</div>
 		<p class="mb-4">
@@ -102,7 +102,7 @@
 			<Button
 				classes="ml-3 "
 				type="{ButtonTypes.PRIMARY}"
-				name="人才招聘"
+				name="在线打印"
 				href="https://zhaopin.comac.cc/"
 				otherProps="{{
 					target: '_blank',

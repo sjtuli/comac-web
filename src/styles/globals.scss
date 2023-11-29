@@ -26,7 +26,6 @@
 
 body {
 	@apply dark:bg-gray-900 bg-white text-black overflow-x-hidden;
-	cursor: none;
 }
 
 html {
@@ -69,10 +68,6 @@ html {
 
 .section-container {
 	@apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
-}
-
-a {
-	cursor: none !important;
 }
 
 .typed-cursor {

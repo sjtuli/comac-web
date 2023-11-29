@@ -5,6 +5,8 @@
 	import Modal from '../components/modals/install_prompt/index.svelte';
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
+	import Header from '../components/common/header.svelte';
+	import { METADATA } from '$lib/constants';
 
 	let isModalOpen = false;
 	// eslint-disable-next-line no-undef
@@ -64,12 +66,36 @@
 	});
 </script>
 
+<head>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"
+	/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="{METADATA.description}" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{METADATA.title}" />
+	<meta property="og:description" content="{METADATA.description}" />
+	<meta property="og:url" content="{METADATA.siteUrl}" />
+	<meta property="og:site_name" content="{METADATA.title}" />
+	<meta property="og:image" content="https://www.ayushsingh.net/preview.jpg" />
+	<meta property="og:image:secure_url" content="{METADATA.siteUrl}" />
+	<meta property="og:image:width" content="1440" />
+	<meta property="og:image:height" content="800" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<title>{METADATA.title}</title>
+</head>
+
 {#if $isLoading}
 	<main>
 		<p aria-busy="true">Please wait...</p>
 	</main>
 {:else}
 	<main>
+		<Header />
 		<slot />
 	</main>
 	<Modal
