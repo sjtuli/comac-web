@@ -9,7 +9,8 @@
 				class="m-auto leading-10 bg-sky-100 inline-block text-sky-600 relative w-1/4 transition-all duration-300 pl-6 hover:pl-12 cursor-pointer hover:font-medium h-10 items-center flex
         {idx === 0 ? 'active' : ''}"
 			>
-				<span class="text-sm">Step {idx + 1}</span>
+				<span class="text-sm">Step </span>
+				{idx + 1}
 				{step}
 			</li>
 		{/each}

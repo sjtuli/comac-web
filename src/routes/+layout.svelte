@@ -2,11 +2,12 @@
 	import { isLoading } from 'svelte-i18n';
 	import { onMount } from 'svelte';
 	import '$lib/i18n';
-	import Modal from '../components/modals/install_prompt/index.svelte';
+	import Modal from '@/components/modals/install_prompt/index.svelte';
 	import 'uno.css';
 	import '@unocss/reset/tailwind.css';
-	import Header from '../components/common/header.svelte';
+	import Header from '@/components/common/header.svelte';
 	import { METADATA } from '$lib/constants';
+	import '@/assets/icon-font/iconfont.css';
 
 	let isModalOpen = false;
 	// eslint-disable-next-line no-undef
@@ -66,7 +67,7 @@
 	});
 </script>
 
-<head>
+<svelte:head>
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta
@@ -87,7 +88,7 @@
 	<meta property="og:image:height" content="800" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	<title>{METADATA.title}</title>
-</head>
+</svelte:head>
 
 {#if $isLoading}
 	<main>

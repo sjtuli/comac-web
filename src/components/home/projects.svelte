@@ -124,8 +124,8 @@
 		class:will-change-transform="{willChange}"
 		bind:this="{sectionTitleElementRef}"
 	>
-		<p class="section-title-sm seq">PROJECTS</p>
-		<h1 class="section-heading seq mt-2">My Works</h1>
+		<p class="section-title-sm seq">PLATFORM</p>
+		<h1 class="section-heading seq mt-2">平台优势</h1>
 		<h2 class="seq mt-2 max-w-sm w-full text-2xl md:max-w-3xl">
 			I have contributed in over 20+ projects ranging from Frontend development,
 			UI/UX design, Open Source, and Motion Graphics

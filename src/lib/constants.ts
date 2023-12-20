@@ -7,8 +7,12 @@ export const METADATA = {
 
 export const MENULINKS = [
 	{
-		name: 'Home',
-		ref: 'home',
+		name: '登录/注册',
+		ref: '/login&resign',
+	},
+	{
+		name: '在线打印',
+		ref: '/onlineprint',
 	},
 	{
 		name: 'Works',

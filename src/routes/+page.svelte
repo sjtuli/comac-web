@@ -45,7 +45,6 @@
 </script>
 
 <ProgressIndicator />
-<!-- <Cursor {isDesktop} /> -->
 <main class="flex-col flex">
 	<HeroSection />
 	<AboutSection />
