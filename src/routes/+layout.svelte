@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { isLoading } from 'svelte-i18n';
 	import { onMount } from 'svelte';
 	import '$lib/i18n';
@@ -8,6 +9,8 @@
 	import Header from '@/components/common/header.svelte';
 	import { METADATA } from '$lib/constants';
 	import '@/assets/icon-font/iconfont.css';
+	import MessageQueue from '../components/common/message/MessageQueue.svelte';
+	import { slide } from 'svelte/transition';
 
 	let isModalOpen = false;
 	// eslint-disable-next-line no-undef
@@ -90,22 +93,25 @@
 	<title>{METADATA.title}</title>
 </svelte:head>
 
-{#if $isLoading}
-	<main>
+<main>
+	{#if $isLoading}
 		<p aria-busy="true">Please wait...</p>
-	</main>
-{:else}
-	<main>
-		<Header />
-		<slot />
-	</main>
-	<Modal
-		isOpen="{isModalOpen}"
-		onClose="{toggleModal}"
-		onInstall="{installApp}"
-		onInstallDenied="{installDenied}"
-	/>
-{/if}
+	{:else}
+		{#if $page.route.id !== '/admin'}
+			<Header />
+			<MessageQueue />
+			<slot />
+		{:else}
+			<slot />
+		{/if}
+		<Modal
+			isOpen="{isModalOpen}"
+			onClose="{toggleModal}"
+			onInstall="{installApp}"
+			onInstallDenied="{installDenied}"
+		/>
+	{/if}
+</main>
 
 <style>
 	@import '../styles/globals.scss';

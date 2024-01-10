@@ -1,56 +1,45 @@
 <script lang="ts">
-	import { fetch } from '$lib/fetch';
-	import Toast from './Toast.svelte';
+	import { onMount } from 'svelte';
+	import { preferences, UserStruct } from '../../store';
+	import { goto } from '$app/navigation';
+	import { messageStore } from '@/components/common/message/store';
 
 	let state = 'login';
+	let username = 'admin';
+	let password = 'admin';
+	let user = new UserStruct();
 
-	let username = '';
-	let password = '';
-	let toastRef: Toast;
+	onMount(() => {
+		// console.log('[ $preferences ] >', $preferences);
+		// $preferences.id = 1;
+	});
 
-	const handleSubmit = async (
-		event: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement },
-	) => {
-		event.preventDefault();
-
-		const formData = new FormData();
-		formData.append('username', username);
-		formData.append('password', password);
-		let url = `/user/${state}`;
-
-		try {
-			const response = await fetch(url, {
-				method: 'POST',
-				body: formData,
-			});
-			console.log('[ response ] >', response);
-			let res = await response.json();
-			if (response.ok) {
-				// 登录成功，可以进行跳转或其他操作
-				console.log('Login successful!');
-				showToast(res.message, 'success');
-			} else {
-				// 处理登录失败的情况
-				console.error('Login failed');
-				showToast(res.detail, 'error');
-			}
-		} catch (error) {
-			console.error('Error during login:', error);
+	async function resetInfo() {
+		//更新userInfo
+		const { msg, type, res, response } = await user.refreshUserInfo();
+		$messageStore = [...$messageStore, { msg: msg, type: 'success' }];
+		if (response && response.ok) {
+			$preferences = user; // getInfo成功后，更新本地数据
 		}
-	};
+	}
 
-	// 函数用于触发 Toast 显示
-	function showToast(
-		msg: string,
-		type: 'info' | 'success' | 'warning' | 'error',
+	export async function handleSubmit(
+		event: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement },
 	) {
-		toastRef.showToast(msg, type); // 调用 Toast 组件中的 showToast 函数
+		//  处理登录请求
+		event.preventDefault();
+		const { msg, type, response } = await user.login(username, password);
+		$messageStore = [...$messageStore, { msg: msg, type: 'success' }];
+		if (response && response.ok) {
+			$preferences = user; //登录成功后，更新本地数据
+			await resetInfo();
+			goto('/');
+		}
 	}
 </script>
 
-<section class="h-100vh w-full flex items-center">
-	<Toast bind:this="{toastRef}" />
-	<div class="w-1/2 h-full bg-sky">asdfa</div>
+<section class="h-100vh w-full flex">
+	<div class="w-1/2 h-full bg-sky"></div>
 	<div class="w-1/2 flex justify-center items-center">
 		<div class="login-container rounded-xl p-6 w-90 <xl:w-70">
 			<h2>{state === 'login' ? '登录' : '注册'}</h2>
@@ -89,7 +78,6 @@
 	}
 	.login-container {
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 		text-align: center;
 	}
 

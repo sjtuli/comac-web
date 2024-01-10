@@ -1,11 +1,10 @@
-<!-- Toast.svelte -->
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 
-	let message: string;
-	let type: string;
+	export let message: string;
+	export let type: string;
 	let background: string;
-	export let visible = false;
+	export let visible = true;
 
 	// 函数用于显示 Toast
 	export function showToast(
@@ -40,11 +39,9 @@
 	}
 </script>
 
-{#if visible}
-	<div
-		transition:fly="{{ y: -10 }}"
-		class="fixed top-30 right-10 p-3 rounded-xl text-xl text-light {background}"
-	>
-		{message}
-	</div>
-{/if}
+<div
+	transition:fly="{{ y: -10 }}"
+	class="p-3 rounded-xl text-xl text-light {background}"
+>
+	{message}
+</div>

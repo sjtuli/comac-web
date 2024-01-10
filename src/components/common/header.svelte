@@ -1,12 +1,15 @@
 <script lang="ts">
+	import { fly, slide } from 'svelte/transition';
 	import { ButtonTypes } from './button.store';
 	import Button from './button.svelte';
 	import Menu from './menu.svelte';
+	import { preferences } from '/@/routes/store';
 
 	let menuVisible = false;
 	function setmenuVisible(i: boolean) {
 		menuVisible = i;
 	}
+	function logout() {}
 </script>
 
 <template>
@@ -34,7 +37,16 @@
 						rel: 'noreferrer',
 					}}"
 				></Button>
-				<a href="\login&resign" class="text-xl <sm:hidden">Jaccount 登录</a>
+				{#if $preferences.isLogin && !$preferences.isLogin()}
+					<a href="/login-resign" class="text-xl <sm:hidden">Jaccount 登录</a>
+				{:else}
+					<div id="userMenu">
+						<a href="/1" class="text-xl <sm:hidden">个人中心</a>
+						<div id="logoutMenu" >
+							<button on:click="{logout}">退出登录</button>
+						</div>
+					</div>
+				{/if}
 				<div class="outer-menu sm:hidden {menuVisible ? 'menu-visible' : ''}">
 					<button
 						class="hamburger w-6 h-6 flex items-center justify-center link relative"
@@ -52,3 +64,26 @@
 		</div>
 	</header>
 </template>
+
+<style lang="scss" scoped>
+	/* 添加样式 */
+	#userMenu {
+		display: inline-block;
+		position: relative;
+	}
+
+	#logoutMenu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		background-color: #fff;
+		padding: 10px;
+	}
+
+	#userMenu:hover #logoutMenu {
+		display: block;
+	}
+</style>

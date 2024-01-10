@@ -11,9 +11,7 @@
 	import { ButtonTypes } from '../common/button.store';
 	import { onMount } from 'svelte';
 	import IframeContainer from '../home/IframeContainer.svelte';
-
-	let displayName = 'LandingHero';
-	let htmlContent = '';
+	import { preferences } from '@/routes/store';
 
 	let typedSpanElement: HTMLSpanElement;
 	let targetSection: HTMLElement;
@@ -44,7 +42,6 @@
 	onMount(async () => {
 		const typed = initTypeAnimation(typedSpanElement);
 		initRevealAnimation(targetSection);
-		// return typed.destroy;
 	});
 
 	const { ref: heroSectionRef } = MENULINKS[0];
@@ -90,24 +87,22 @@
 		</div>
 		<div class="flex seq">
 			<Button
-				classes="mr-3"
-				type="{ButtonTypes.OUTLINE}"
-				name="官网"
-				otherProps="{{
-					target: '_blank',
-					rel: 'noreferrer',
-				}}"
-				href="http://www.comac.cc/"
-			></Button>
-			<Button
-				classes="ml-3 "
+				classes="mr-3 "
 				type="{ButtonTypes.PRIMARY}"
 				name="在线打印"
-				href="https://zhaopin.comac.cc/"
+				href="/onlineprint"
 				otherProps="{{
-					target: '_blank',
 					rel: 'noreferrer',
 				}}"
+			></Button>
+			<Button
+				classes="mx-3"
+				type="{ButtonTypes.OUTLINE}"
+				name="个人中心"
+				otherProps="{{
+					rel: 'noreferrer',
+				}}"
+				href="{`${$preferences.id}`}"
 			></Button>
 		</div>
 	</div>
@@ -115,7 +110,6 @@
 		class="absolute hero-bg right-0 md:bottom-0 bottom-8 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end"
 		style="height: 650px; max-height: '650px'"
 	>
-		<!-- <Airplane3d /> -->
 		<IframeContainer />
 	</div>
 </section>
