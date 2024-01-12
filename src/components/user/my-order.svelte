@@ -49,7 +49,6 @@
 <table>
 	<thead>
 		<tr>
-			<th>ID</th>
 			<th>订单号</th>
 			<th>班级</th>
 			<th>学院</th>
@@ -58,7 +57,7 @@
 			<th>状态</th>
 			<th>创建时间</th>
 			<th>总价</th>
-			<th>审核</th>
+			<th>状态</th>
 			<th>操作</th>
 			{#if $page.route.id === '/[user_id=integer]'}
 				<th>取消</th>
@@ -66,18 +65,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each data as item (item.id)}
+		{#each data as row (row.id)}
 			<tr>
-				<td>{item.id}</td>
-				<td>{item.orderNumber}</td>
-				<td>{item.class}</td>
-				<td>{item.college}</td>
-				<td>{item.teacher}</td>
-				<td>{item.description}</td>
-				<td>{item.status}</td>
-				<td>{item.createTime}</td>
-				<td>{item.totalPrice}</td>
-				<td>{item.review}</td>
+				<td>{row.orderNumber}</td>
+				<td>{row.class}</td>
+				<td>{row.college}</td>
+				<td>{row.teacher}</td>
+				<td>{row.description}</td>
+				<td>{row.status}</td>
+				<td>{row.createTime}</td>
+				<td>{row.totalPrice}</td>
+				<td>{row.review}</td>
 				<td>
 					<button class="bg-blue-500 text-white py-1 px-2 rounded">编辑</button>
 				</td>
@@ -92,25 +90,29 @@
 	</tbody>
 </table>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	table {
-		@apply w-full border-collapse table-auto text-base;
+		border-collapse: collapse;
+		width: 100%;
 	}
 
 	th,
 	td {
-		@apply py-2 px-4 border;
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: center;
 	}
 
 	th {
-		@apply bg-gray-100 dark:bg-gray-800;
+		background-color: #f2f2f2;
 	}
 
-	td {
-		@apply bg-white dark:bg-gray-700;
-	}
 	tr:nth-child(even) {
 		background-color: #f2f2f2;
+	}
+
+	tr:hover {
+		background-color: #f5f5f5;
 	}
 
 	.responsive-table {

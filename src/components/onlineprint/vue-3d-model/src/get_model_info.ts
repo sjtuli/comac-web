@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import * as CryptoJS from 'crypto-js';
 
 export function getVolume(
 	geometry: THREE.BufferGeometry<THREE.NormalBufferAttributes>,
@@ -262,4 +263,47 @@ function _checkBack(
 	const flag = det <= 1e-6 && t >= 0 && u >= 0 && v >= 0 && u + v <= 1;
 	if (flag) return originPoint.clone().add(dir.clone().multiplyScalar(t));
 	else return null;
+}
+
+export async function getFileMD5(file: File): Promise<string> {
+	return new Promise((resolve, reject) => {
+		try {
+			if (!file) throw new Error('请选择文件');
+
+			const md5 = CryptoJS.algo.MD5.create();
+			const reader = new FileReader();
+			reader.onload = async (event) => {
+				const arrayBuffer = event.target?.result as ArrayBuffer;
+				const content = new Uint8Array(arrayBuffer);
+
+				let size = 0;
+				let offset = 0;
+				const chunkSize = 1024;
+
+				// 初始化MD5哈希
+				while (offset < content.length) {
+					const chunk = content.subarray(offset, offset + chunkSize);
+					const chunkWordArray = CryptoJS.lib.WordArray.create(chunk);
+					md5.update(chunkWordArray);
+					size += chunk.length;
+					// 打印MD5哈希值
+					offset += chunkSize;
+				}
+				const res = md5.finalize().toString(CryptoJS.enc.Hex);
+				console.log('MD5哈希:', res);
+				resolve(res);
+			};
+
+			reader.onerror = (event) => {
+				console.error('文件读取失败:', event.target?.error);
+				// 失败时调用 reject
+				reject(event.target?.error || new Error('文件读取失败'));
+			};
+			// 读取文件内容为ArrayBuffer
+			reader.readAsArrayBuffer(file);
+		} catch (error) {
+			console.error('计算文件MD5失败:', error.message);
+			reject(error);
+		}
+	});
 }

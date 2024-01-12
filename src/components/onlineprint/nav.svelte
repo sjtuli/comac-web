@@ -1,13 +1,48 @@
 <script lang="ts">
-	let steps = ['上传、估价', '付款', '等待打印完成', '完成'];
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+
+	let steps = ['上传、估价', '付款', '等待打印完成'];
+	let urls = ['upload', 'payment', 'printing'];
+
+	export let selectedTab = 0;
+
+	$: {
+		selectedTab;
+		browser && goto(urls[selectedTab]);
+	}
+
+	onMount(() => {
+		switch ($page.url.pathname) {
+			case '/upload':
+				selectedTab = 0;
+				break;
+			case '/payment':
+				selectedTab = 1;
+				break;
+			case '/printing':
+				selectedTab = 2;
+				break;
+			case '/complete':
+				selectedTab = 3;
+				break;
+		}
+	});
 </script>
 
 <nav class="m-auto mb-3 w-screen-lg">
 	<ul class="flex">
 		{#each steps as step, idx}
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<li
-				class="m-auto leading-10 bg-sky-100 inline-block text-sky-600 relative w-1/4 transition-all duration-300 pl-6 hover:pl-12 cursor-pointer hover:font-medium h-10 items-center flex
-        {idx === 0 ? 'active' : ''}"
+				class="m-auto leading-10 bg-sky-100 inline-block text-sky-600 relative w-1/3 transition-all duration-300 pl-6 hover:pl-12 cursor-pointer hover:font-medium h-10 items-center flex
+        {selectedTab === idx ? 'active' : ''}"
+				on:click="{() => {
+					selectedTab = idx;
+				}}"
 			>
 				<span class="text-sm">Step </span>
 				{idx + 1}

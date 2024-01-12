@@ -23,12 +23,14 @@ async function myfetch(url: string, options: RequestInit) {
 					...options,
 					headers: {
 						// 在这里可以添加其他默认请求头
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Headers': 'Content-Type',
 						...options.headers,
 					},
 				};
-				if (user.isLogin && user.isLogin()) {
+				if (user.login_status) {
 					mergedOptions.headers = {
-						Authorization: `Bearer ${user.getToken()}`,
+						Authorization: `Bearer ${user.token}`,
 						...mergedOptions.headers,
 					};
 				}

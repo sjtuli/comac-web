@@ -32,11 +32,7 @@ export const MENULINKS = [
 	},
 ];
 
-export const TYPED_STRINGS = [
-	'长期奋斗，长期攻关，长期吃苦，长期奉献',
-	'一定要把大飞机搞上去',
-	'举全国之力，聚全球之智',
-];
+export const TYPED_STRINGS = ['为高校创新提供先进生产力'];
 
 export const EMAIL = 'ayush.singh.xda@gmail.com';
 

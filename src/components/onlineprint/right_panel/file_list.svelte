@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { FileState } from '/@/routes/onlineprint/store';
+	import type { FileState } from '../../../routes/(order)/store';
 
 	export let fileState: FileState;
 
@@ -23,89 +23,126 @@
 </script>
 
 <div class="mb-2 flex-none">
-	<fieldset>
-		<div class="my-2 border-y border-r text-center text-base">
+	<fieldset class=" border-r">
+		<div class="my-2 text-center text-base">
 			{#if fileState.files.length === 0}
 				<p class="py-2">还没有文件</p>
 			{:else}
-				<div class="text-left">
-					{#each fileState.files as item, idx (idx)}
-						<div
-							class="flex items-center justify-between {fileState.selectedFileId ===
-							idx
-								? 'bg-sky-50'
-								: ''}"
-						>
-							<button
-								class="w-36 cursor-pointer truncate border-b py-2 pl-3 transition-all duration-300 hover:bg-light-500 hover:pl-0 hover:font-medium"
-								on:click="{() => {
-									fileState.selectedFileId = idx;
-									fileState = fileState;
-								}}"
+				<table class="text-left">
+					<thead>
+						<tr>
+							<th class="text-center">文件名</th>
+							<th class="text-center"><label for="number">数量</label></th>
+							<th class="text-center"><label for="scale">缩放</label></th>
+							<th class="text-center"> <label for="dropdown">颜色</label> </th>
+							<th class="text-center">积分</th>
+							<th class="text-center">删除</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each fileState.files as { file, fileNum }, idx (idx)}
+							<tr
+								class=" {fileState.selectedFileId === idx ? 'bg-sky-50' : ''}"
 							>
-								{item.file.name}</button
-							>
-							<fieldset class="block w-30 flex items-center justify-between">
-								<div class="btn-group" role="group" aria-label="...">
+								<td>
 									<button
-										class="btn"
-										on:click="{() => changeNumber(idx, 'down')}">-</button
+										class="w-36 cursor-pointer truncate border pl-3 transition-all duration-300 hover:bg-light-500 hover:pl-0 hover:font-medium"
+										on:click="{() => {
+											fileState.selectedFileId = idx;
+										}}"
 									>
-									<input
-										bind:value="{fileState.files[idx].fileNum}"
-										type="number"
-										on:input="{(event) => changeNumber(idx, event)}"
-									/>
-									<button class="btn" on:click="{() => changeNumber(idx, 'up')}"
-										>+</button
+										{file.name}
+									</button>
+								</td>
+								<td>
+									<fieldset class="block flex items-center justify-between">
+										<div class="flex items-center">
+											<button
+												class="border text-light-50 w-6 leading-6 bg-blue-400 text-center align-middle rounded-l-1 hover:bg-blue-600"
+												on:click="{() => changeNumber(idx, 'down')}"
+											>
+												-
+											</button>
+											<input
+												id="number"
+												class="text-sm align-middle m-auto w-6 h-6 border-transparent"
+												bind:value="{fileNum}"
+												type="number"
+												on:input="{(event) => changeNumber(idx, event)}"
+											/>
+											<button
+												class="border text-light-50 w-6 leading-6 bg-blue-400 text-center rounded-r-1 hover:bg-blue-600"
+												on:click="{() => changeNumber(idx, 'up')}"
+											>
+												+
+											</button>
+										</div>
+									</fieldset>
+								</td>
+								<td>
+									<div class="flex">
+										<input id="scale" class="w-10" type="text" />%
+									</div>
+								</td>
+								<td>
+									<select id="dropdown" name="dropdown">
+										<option value="option1">选项1</option>
+										<option value="option2">选项2</option>
+										<!-- 其他选项 -->
+									</select>
+								</td>
+								<td> 123123 </td>
+								<td>
+									<button
+										class="text-gray-600 hover:text-sky-600 w-10"
+										on:click="{() => fileState.delFile(idx)}"
 									>
-								</div>
-								<button
-									class="text-gray-600 hover:text-sky-600"
-									on:click="{(event) => {
-										fileState.delFile(idx, event);
-										fileState = fileState;
-									}}"
-								>
-									<span class="iconfont icon-shanchu text-xl"></span>
-								</button>
-							</fieldset>
-						</div>
-					{/each}
-				</div>
+										<span class="iconfont icon-shanchu text-xl"></span>
+									</button>
+								</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
 			{/if}
 		</div>
 	</fieldset>
 </div>
 
 <style lang="scss" scoped>
-	.btn-group {
-		@apply flex items-center block;
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 
-		.btn {
-			margin-left: -1px;
-			@apply border text-light-50 w-6 leading-6 bg-blue-400 text-center align-middle hover:bg-blue-600;
-		}
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
 
-		input {
-			@apply align-middle m-auto w-10 h-8 border-transparent;
-		}
+	th,
+	td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: center;
+	}
 
-		input::-webkit-outer-spin-button,
-		input::-webkit-inner-spin-button {
-			-webkit-appearance: none;
-		}
+	th {
+		background-color: #f2f2f2;
+	}
 
-		input[type='number'] {
-			-moz-appearance: textfield;
-		}
+	tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
 
-		.btn:first-child {
-			@apply rounded-l-lg ml-0;
-		}
+	tr:hover {
+		background-color: #f5f5f5;
+	}
 
-		.btn:last-child {
-			@apply rounded-r-lg ml-0;
-		}
+	.responsive-table {
+		@apply block sm:table;
 	}
 </style>

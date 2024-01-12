@@ -10,7 +10,7 @@
 </script>
 
 <Header />
-<main class=" block m-auto flex">
+<main class="block m-auto flex">
 	<Leftbar />
 	<div class="border w-full p-5">
 		<h1 class="mb-3">你好,{$preferences.info.username}</h1>

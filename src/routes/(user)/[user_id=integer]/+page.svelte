@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CreditPoint from './credit-point.svelte';
+	import MyModels from './my-models.svelte';
 	import { page } from '$app/stores';
 	import LeftTabBar from '../../../components/user/left-tabBar.svelte';
 	import MyOrder from '/@/components/user/my-order.svelte';
@@ -12,7 +13,7 @@
 	const productId = $page.params.user_id;
 
 	onMount(() => {
-		if ($preferences.isLogin && !$preferences.isLogin()) {
+		if ($preferences.login_status) {
 			$messageStore = [...$messageStore, { type: 'error', msg: '请先登录' }];
 			goto('/login-resign');
 		}
@@ -20,7 +21,7 @@
 </script>
 
 <main class="mt-30 block m-auto 2xl:w-screen-2xl flex">
-	<LeftTabBar tabs="{['个人信息', '我的订单', '我的积分']}" />
+	<LeftTabBar tabs="{['我的订单', '我的积分', '个人信息', '我的模型库']}" />
 	<div class="border w-full p-5">
 		<h1>你好,{$preferences.info.username}</h1>
 		<h1>{$selectedTab}</h1>
@@ -32,6 +33,7 @@
 			<MyOrder />
 		{:else if $selectedTab === '我的积分'}
 			<CreditPoint />
+		{:else if $selectedTab === '我的积分'}
 		{/if}
 	</div>
 </main>

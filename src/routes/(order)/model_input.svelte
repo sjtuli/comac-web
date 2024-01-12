@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ModelStl from '@/components/onlineprint/vue-3d-model/src/model-stl.svelte';
-	import type { FileState } from '/@/routes/onlineprint/store';
+	import type { FileState } from './store';
 
 	export let fileState: FileState;
 	export let uploadFiles: (event: any) => void;
@@ -24,7 +24,7 @@
 </script>
 
 {#if fileState.files.length === 0}
-	<fieldset bind:this="{fileArea}" class="h-120 w-screen-md border-none">
+	<fieldset bind:this="{fileArea}" class="h-90 w-screen-sm border-none">
 		<input
 			id="file_upload"
 			class="hidden"
@@ -44,7 +44,7 @@
 		</label>
 	</fieldset>
 {:else}
-	<div class="h-120 w-screen-md shadow-sm">
+	<div class="h-90 w-screen-sm shadow-sm">
 		<ModelStl
 			bind:src="{fileState.files[fileState.selectedFileId].fileUrl}"
 			fileName="{fileState.files[fileState.selectedFileId]?.file.name}"

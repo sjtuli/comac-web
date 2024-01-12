@@ -76,6 +76,10 @@
 		font-weight: bold;
 	}
 
+	tr:hover {
+		background-color: #f5f5f5;
+	}
+
 	tr:nth-child(even) {
 		background-color: #f2f2f2;
 	}

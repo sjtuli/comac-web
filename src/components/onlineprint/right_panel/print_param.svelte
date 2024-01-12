@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { FileState } from "/@/routes/onlineprint/store";
+	import type { FileState } from "../../../routes/(order)/store";
 
 	export let fileState: FileState;
 </script>

@@ -90,7 +90,7 @@
 				classes="mr-3 "
 				type="{ButtonTypes.PRIMARY}"
 				name="在线打印"
-				href="/onlineprint"
+				href="/upload"
 				otherProps="{{
 					rel: 'noreferrer',
 				}}"

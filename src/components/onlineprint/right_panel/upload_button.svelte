@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { ChangeEventHandler } from 'svelte/elements';
 
-	export let uploadFiles: ChangeEventHandler<HTMLInputElement>;
+	export let addFiles: ChangeEventHandler<HTMLInputElement>;
 </script>
 
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-start">
 	<label
-		class=" w-70 cursor-pointer rounded-md bg-sky-400 p-1 text-center text-light-50 hover:bg-sky-500"
+		class=" w-70 cursor-pointer rounded bg-sky-400 p-1 text-center text-light-50 hover:bg-sky-500"
 		for="file_upload"
 	>
 		<span class="iconfont icon-upload"></span>上传模型</label
@@ -18,6 +18,6 @@
 		name="file_upload"
 		accept=".stl,.3mf"
 		multiple
-		on:change="{uploadFiles}"
+		on:change="{addFiles}"
 	/>
 </div>

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { FileState } from '/@/routes/onlineprint/store';
+	import type { FileState } from '../../../routes/(order)/store';
 
 	export let fileState: FileState;
 </script>
 
-<section class="mt-3 w-80 bg-white p-4">
+<section class="mt-3 w-screen-md bg-white p-4">
 	<div> 合计 </div>
 	{#each fileState.files as item, idx}
 		<div class="flex items-end justify-between pt-2">

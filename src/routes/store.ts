@@ -43,7 +43,7 @@ export class UserStruct extends AppUser {
 		return { msg, type, response, res };
 	}
 
-	get isLogin() {
+	get login_status() {
 		const arelogin = this.access_token !== '';
 		return arelogin;
 	}

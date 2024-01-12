@@ -19,6 +19,7 @@ export default function ({ command, mode }: ConfigEnv): UserConfig {
 			alias: {
 				'@': '/src',
 				'/@': '/src',
+				$lib: '/src/lib',
 			},
 		},
 		plugins: [
